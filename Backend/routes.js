@@ -8,6 +8,7 @@ routes.get('/getEmployeesByCpf/:cpf', EmployeesControllers.getEmployeesByCpf);
 routes.get('/getEmployeesByOffice/:office', EmployeesControllers.getEmployeesByOffice);
 routes.get('/getEmployeesByRegisterDate', EmployeesControllers.getEmployeesByRegisterDate);
 routes.get('/getEmployeesByStatus/:status', EmployeesControllers.getEmployeesByStatus);
-
+routes.get('/getEmployeesByUfBirth/:ufBirth', EmployeesControllers.getEmployeesByUfBirth);
+routes.get('/getEmployeesBySalaryRange/:lowerSalary/:upperSalary', EmployeesControllers.getEmployeesBySalaryRange);
 
 module.exports = routes;

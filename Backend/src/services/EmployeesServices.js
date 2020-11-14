@@ -26,5 +26,28 @@ module.exports = {
             }
         }
         return (employees);
+    },
+
+    async getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary){
+        let employees = []
+        for (let line of data.split('\n')){
+            if(line.split(';').length > 1){
+                if( parseFloat(line.split(';')[positionFilterFactor].trim()) >= parseFloat(lowerSalary) && parseFloat(line.split(';')[positionFilterFactor].trim()) <= parseFloat(upperSalary)){
+                    employees.push(
+                        {
+                            name: line.split(';')[3],
+                            cpf: line.split(';')[2],
+                            office: line.split(';')[1],
+                            registerDate: line.split(';')[0],
+                            ufBirth: line.split(';')[4],
+                            salary: line.split(';')[5],
+                            status: line.split(';')[6].trim()
+                        }
+                    )
+                }
+            }
+        }
+        return (employees);
     }
+
 }
