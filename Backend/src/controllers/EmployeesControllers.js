@@ -93,7 +93,39 @@ module.exports = {
         }
     },
 
-    async createEmployee(req, res, next){
-        
+    async addingOrUpdateEmployee(req, res, next){
+        try{
+            let employee = req.body;
+            let cpf = employee.cpf;
+            let positionFilterFactor = 2;
+            const data = await EmployeesServices.getData();
+            const employeeAlreadyRegistered = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
+            if(employeeAlreadyRegistered.length === 0){
+               let statusAddingEmployee = await EmployeesServices.addingEmployee(employee)
+                res.json(statusAddingEmployee)
+            } else {
+                let statusUpdateEmployee = await EmployeesServices.updateEmployee(data, employeeAlreadyRegistered, employee)
+                res.json(statusUpdateEmployee)
+            }
+        } catch(err){
+            next(err);
+        }
+    },
+
+    async deleteEmployeeByCpf(req, res, next){
+        try{
+            let positionFilterFactor = 2;
+            let cpf = req.params.cpf;
+            const data = await EmployeesServices.getData();
+            const employeeAlreadyRegistered = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
+            if(employeeAlreadyRegistered.length === 0){
+                res.json({message: 'Employee not found.'})
+            } else {
+                let statusExcludedEmployee = await EmployeesServices.deleteEmployee(data, employeeAlreadyRegistered);
+                res.json(statusExcludedEmployee)
+            }
+        } catch(err){
+            next(err);
+        }
     }
 }

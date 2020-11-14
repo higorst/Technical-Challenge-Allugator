@@ -1,5 +1,10 @@
 var fs = require('fs').promises;
 
+const formatForSave = (employee) => {
+    let stringSave = `\n\n${employee.registerDate};${employee.office};${employee.cpf};${employee.name};${employee.ufBirth};${employee.salary};${employee.status}`
+    return stringSave
+}
+
 module.exports = {
     async getData(){
         const data = await fs.readFile(`${__dirname}/../../data/database.txt`, "utf8");
@@ -48,6 +53,33 @@ module.exports = {
             }
         }
         return (employees);
-    }
+    },
 
+
+    async addingEmployee(employee){
+        try {
+            let stringSave = await formatForSave(employee);
+            await fs.appendFile(`${__dirname}/../../data/database.txt`,  stringSave)
+            return ({status: 'success', message: 'Employee Registered.'});
+        } catch(err){
+            return err
+        }
+    },
+
+    async updateEmployee(data, employeeAlreadyRegistered, newEmployee){
+        let stringAlreadyRegistered = await formatForSave(employeeAlreadyRegistered[0]);
+        let newStringSave = await formatForSave(newEmployee);
+        let newvalue = data.replace(stringAlreadyRegistered, newStringSave)
+        await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
+        return ({status: 'success', message: 'Employee successfully changed.'});
+    },
+    //Verificar outra camada de arquivos para adicionar função de gerar string.
+
+    async deleteEmployee(data, employeeAlreadyRegistered){
+        let stringAlreadyRegistered = await formatForSave(employeeAlreadyRegistered[0]);
+        let newvalue = data.replace(stringAlreadyRegistered, '')
+        await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
+        return ({status: 'success', message: 'Employee successfully excluded.'});
+    }
 }
+

@@ -10,5 +10,7 @@ routes.get('/getEmployeesByRegisterDate', EmployeesControllers.getEmployeesByReg
 routes.get('/getEmployeesByStatus/:status', EmployeesControllers.getEmployeesByStatus);
 routes.get('/getEmployeesByUfBirth/:ufBirth', EmployeesControllers.getEmployeesByUfBirth);
 routes.get('/getEmployeesBySalaryRange/:lowerSalary/:upperSalary', EmployeesControllers.getEmployeesBySalaryRange);
+routes.post('/addingOrUpdateEmployee', EmployeesControllers.addingOrUpdateEmployee);
+routes.delete('/deleteEmployeeByCpf/:cpf', EmployeesControllers.deleteEmployeeByCpf);
 
 module.exports = routes;
