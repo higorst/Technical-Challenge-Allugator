@@ -2,7 +2,7 @@ const { Console } = require('console');
 var fs = require('fs');
 const EmployeesServices = require('./../services/EmployeesServices');
 
-module.exports = {
+class EmployeeControllers {
 
     async getEmployeesByName(req, res, next){
         try{
@@ -10,12 +10,15 @@ module.exports = {
             let name = req.params.name;
             const data = await EmployeesServices.getData();   
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, name);
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employee not found.'})
+            } else{
+                res.send(employees)
+            }
         } catch(err){
             next(err);
         }
-
-    },
+    }
 
     async getEmployeesByCpf(req, res, next){
        try { 
@@ -23,12 +26,15 @@ module.exports = {
             let cpf = req.params.cpf;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
-            res.send(employees);
+            if(employees.length === 0 ){
+                res.json({message: 'Employee not found.'})
+            } else{
+                res.send(employees);
+            }
         } catch(err){
             next(err);
         }
-
-    },
+    }
 
     async getEmployeesByOffice(req, res, next){
         try {
@@ -36,12 +42,15 @@ module.exports = {
             let office = req.params.office;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, office);
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employees not found.'})
+            } else{
+                res.send(employees);
+            }
         } catch(err){
             next(err);
         }
-
-    },
+    }
 
     async getEmployeesByRegisterDate(req, res, next){
        try{
@@ -49,12 +58,15 @@ module.exports = {
             let registerDate = req.body.registerDate;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, registerDate)
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employees not found.'})
+            } else{
+                res.send(employees);
+            }
        } catch(err){
            next(err);
        }
-
-    },
+    }
 
     async getEmployeesByStatus(req, res, next){
         try{
@@ -62,11 +74,15 @@ module.exports = {
             let status = req.params.status;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, status);
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employees not found.'})
+            } else{
+                res.send(employees);
+            }
         } catch(err){
             next(err);
         }
-    },
+    }
 
     async getEmployeesByUfBirth(req, res, next) {
         try{
@@ -74,11 +90,15 @@ module.exports = {
             let ufBirth = req.params.ufBirth;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, ufBirth);
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employees not found.'})
+            } else{
+                res.send(employees);
+            }
         } catch(err){
             next(err);
         }
-    },
+    }
 
     async getEmployeesBySalaryRange(req, res, next){
         try{
@@ -87,11 +107,15 @@ module.exports = {
             let upperSalary = req.params.upperSalary;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary);
-            res.send(employees)
+            if(employees.length === 0 ){
+                res.json({message: 'Employees not found.'})
+            } else{
+                res.send(employees);
+            }
         } catch(err){
             next(err);
         }
-    },
+    }
 
     async addingOrUpdateEmployee(req, res, next){
         try{
@@ -110,7 +134,7 @@ module.exports = {
         } catch(err){
             next(err);
         }
-    },
+    }
 
     async deleteEmployeeByCpf(req, res, next){
         try{
@@ -129,3 +153,5 @@ module.exports = {
         }
     }
 }
+
+module.exports = new EmployeeControllers();

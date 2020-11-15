@@ -1000,4 +1000,4 @@ DataCad;Cargo;Cpf;Nome;UfNasc;Salario;Status
 
 03/04/2017;AC Sr;95267437336;Bethann Age;RR;2098.50;ATIVO
 
-16/11/2020;DEV jr;06807235528;Samuel Rebouças de Jesus;BA;10520.60;ATIVO
+03/04/2018;DEV jr;06807235526;Samuel rebouças de jesuus;BA;15120.60;ATIVO
