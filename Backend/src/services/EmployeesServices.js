@@ -1,15 +1,12 @@
 var fs = require('fs').promises;
 
-const formatForSave = (employee) => {
-    let stringSave = `\n\n${employee.registerDate};${employee.office};${employee.cpf};${employee.name};${employee.ufBirth};${employee.salary};${employee.status}`
-    return stringSave
-}
+const {stringFormatForSave} = require('./../helpers/stringFormat');
 
-module.exports = {
+class EmployeeServices {
     async getData(){
         const data = await fs.readFile(`${__dirname}/../../data/database.txt`, "utf8");
         return data
-    },
+    }
 
     async getEmployees(data, positionFilterFactor, factorValue){
         let employees = []
@@ -31,7 +28,7 @@ module.exports = {
             }
         }
         return (employees);
-    },
+    }
 
     async getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary){
         let employees = []
@@ -53,33 +50,43 @@ module.exports = {
             }
         }
         return (employees);
-    },
+    }
 
 
     async addingEmployee(employee){
         try {
-            let stringSave = await formatForSave(employee);
-            await fs.appendFile(`${__dirname}/../../data/database.txt`,  stringSave)
+            let stringSave = await stringFormatForSave(employee);
+            await fs.appendFile(`${__dirname}/../../data/database.txt`,  `\n\n${stringSave}`);
             return ({status: 'success', message: 'Employee Registered.'});
         } catch(err){
             return err
         }
-    },
+    }
 
     async updateEmployee(data, employeeAlreadyRegistered, newEmployee){
-        let stringAlreadyRegistered = await formatForSave(employeeAlreadyRegistered[0]);
-        let newStringSave = await formatForSave(newEmployee);
-        let newvalue = data.replace(stringAlreadyRegistered, newStringSave)
-        await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
-        return ({status: 'success', message: 'Employee successfully changed.'});
-    },
-    //Verificar outra camada de arquivos para adicionar função de gerar string.
+        try{
+            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered[0]);
+            let newStringSave = await stringFormatForSave(newEmployee);
+            let newvalue = data.replace(stringAlreadyRegistered, newStringSave);
+            await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
+            return ({status: 'success', message: 'Employee successfully changed.'});
+        } catch(err){
+            return err
+        }
+    }
 
     async deleteEmployee(data, employeeAlreadyRegistered){
-        let stringAlreadyRegistered = await formatForSave(employeeAlreadyRegistered[0]);
-        let newvalue = data.replace(stringAlreadyRegistered, '')
-        await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
-        return ({status: 'success', message: 'Employee successfully excluded.'});
+        try{
+            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered[0]);
+            let newValue = data.replace(stringAlreadyRegistered, '');
+            let newValueRemoveBreakLine = newValue.replace(/\r\n\r\n\r/, "");
+            await fs.writeFile(`${__dirname}/../../data/database.txt`, newValueRemoveBreakLine, 'utf8');
+            return ({status: 'success', message: 'Employee successfully excluded.'});
+        } catch(err){
+            return err
+        }
     }
 }
+
+module.exports = new EmployeeServices();
 
