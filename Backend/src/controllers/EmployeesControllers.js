@@ -1,5 +1,3 @@
-const { Console } = require('console');
-var fs = require('fs');
 const EmployeesServices = require('./../services/EmployeesServices');
 
 class EmployeeControllers {
@@ -13,7 +11,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employee not found.'})
             } else{
-                res.send(employees)
+                res.json({message:'Employees found.', data: employees})
             }
         } catch(err){
             next(err);
@@ -29,7 +27,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employee not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees});
             }
         } catch(err){
             next(err);
@@ -45,7 +43,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employees not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees})
             }
         } catch(err){
             next(err);
@@ -61,7 +59,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employees not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees})
             }
        } catch(err){
            next(err);
@@ -77,7 +75,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employees not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees})
             }
         } catch(err){
             next(err);
@@ -93,7 +91,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employees not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees})
             }
         } catch(err){
             next(err);
@@ -110,7 +108,7 @@ class EmployeeControllers {
             if(employees.length === 0 ){
                 res.json({message: 'Employees not found.'})
             } else{
-                res.send(employees);
+                res.json({message:'Employees found.', data: employees})
             }
         } catch(err){
             next(err);

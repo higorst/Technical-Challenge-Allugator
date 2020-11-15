@@ -57,7 +57,7 @@ class EmployeeServices {
         try {
             let stringSave = await stringFormatForSave(employee);
             await fs.appendFile(`${__dirname}/../../data/database.txt`,  `\n\n${stringSave}`);
-            return ({status: 'success', message: 'Employee Registered.'});
+            return ({message: 'Employee Registered.'});
         } catch(err){
             return err
         }
@@ -69,7 +69,7 @@ class EmployeeServices {
             let newStringSave = await stringFormatForSave(newEmployee);
             let newvalue = data.replace(stringAlreadyRegistered, newStringSave);
             await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
-            return ({status: 'success', message: 'Employee successfully changed.'});
+            return ({message: 'Employee successfully changed.'});
         } catch(err){
             return err
         }
@@ -81,7 +81,7 @@ class EmployeeServices {
             let newValue = data.replace(stringAlreadyRegistered, '');
             let newValueRemoveBreakLine = newValue.replace(/\r\n\r\n\r/, "");
             await fs.writeFile(`${__dirname}/../../data/database.txt`, newValueRemoveBreakLine, 'utf8');
-            return ({status: 'success', message: 'Employee successfully excluded.'});
+            return ({message: 'Employee successfully excluded.'});
         } catch(err){
             return err
         }
@@ -89,4 +89,3 @@ class EmployeeServices {
 }
 
 module.exports = new EmployeeServices();
-
