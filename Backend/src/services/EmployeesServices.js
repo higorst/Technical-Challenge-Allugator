@@ -56,7 +56,7 @@ class EmployeeServices {
     async addingEmployee(employee){
         try {
             let stringSave = await stringFormatForSave(employee);
-            await fs.appendFile(`${__dirname}/../../data/database.txt`,  `\n\n${stringSave}`);
+            await fs.appendFile(`${__dirname}/../../data/database.txt`,  `\r\n\r\n${stringSave}`);
             return ({message: 'Employee Registered.'});
         } catch(err){
             return err
@@ -65,7 +65,7 @@ class EmployeeServices {
 
     async updateEmployee(data, employeeAlreadyRegistered, newEmployee){
         try{
-            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered[0]);
+            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered);
             let newStringSave = await stringFormatForSave(newEmployee);
             let newvalue = data.replace(stringAlreadyRegistered, newStringSave);
             await fs.writeFile(`${__dirname}/../../data/database.txt`, newvalue, 'utf8');
@@ -77,12 +77,13 @@ class EmployeeServices {
 
     async deleteEmployee(data, employeeAlreadyRegistered){
         try{
-            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered[0]);
-            let newValue = data.replace(stringAlreadyRegistered, '');
-            let newValueRemoveBreakLine = newValue.replace(/\r\n\r\n\r/, "");
+            let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered);
+            let newValue = data.replace(stringAlreadyRegistered, '\r');
+            let newValueRemoveBreakLine = await newValue.replace(/\r\n\r\n\r/, "");
             await fs.writeFile(`${__dirname}/../../data/database.txt`, newValueRemoveBreakLine, 'utf8');
             return ({message: 'Employee successfully excluded.'});
         } catch(err){
+            console.log(err)
             return err
         }
     }

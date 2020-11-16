@@ -126,7 +126,7 @@ class EmployeeControllers {
                let statusAddingEmployee = await EmployeesServices.addingEmployee(employee)
                 res.json(statusAddingEmployee)
             } else {
-                let statusUpdateEmployee = await EmployeesServices.updateEmployee(data, employeeAlreadyRegistered.data, employee)
+                let statusUpdateEmployee = await EmployeesServices.updateEmployee(data, employeeAlreadyRegistered.data[0], employee)
                 res.json(statusUpdateEmployee)
             }
         } catch(err){
@@ -143,7 +143,7 @@ class EmployeeControllers {
             if(employeeAlreadyRegistered.data.length === 0){
                 res.json({message: 'Employee not found.'})
             } else {
-                let statusExcludedEmployee = await EmployeesServices.deleteEmployee(data, employeeAlreadyRegistered.data);
+                let statusExcludedEmployee = await EmployeesServices.deleteEmployee(data, employeeAlreadyRegistered.data[0]);
                 res.json(statusExcludedEmployee)
             }
         } catch(err){

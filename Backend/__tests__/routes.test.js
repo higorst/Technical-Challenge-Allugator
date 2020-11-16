@@ -4,91 +4,70 @@ const {employeeUsedTests} = require('../src/helpers/constants');
 
 describe('Tests for routes', () => {
 
-    test('Access the route get /getEmployeesByName/:name and check return', async () => {
+    test('Access the route get /getEmployeesByName/:name and check return status and properties', async () => {
         const name = employeeUsedTests.name;
         const res = await request(app).get(`/getEmployeesByName/${name}`);
 
-        // expected =  employeeUsedTests;
-
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesByCpf/:cpf and check return', async () => {
+    test('Access the route get /getEmployeesByCpf/:cpf and check return status and properties', async () => {
         const cpf = employeeUsedTests.cpf;
         const res = await request(app).get(`/getEmployeesByCpf/${cpf}`);
-        
-        // expected =  employeeUsedTests;
 
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesByOffice/:office and check return', async () => {
+    test('Access the route get /getEmployeesByOffice/:office and check return status and properties', async () => {
         const office = employeeUsedTests.office;
         const res = await request(app).get(`/getEmployeesByOffice/${office}`);
         
-        // expected =  employeeUsedTests;
-
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesByRegisterDate and check return', async () => {
-        const res = await request(app).get(`/getEmployeesByRegisterDate`).send({registerDate: employeeUsedTests.registerDate});
+    test('Access the route get /getEmployeesByRegisterDate and check return status and properties', async () => {
+        const res = await request(app).post(`/getEmployeesByRegisterDate`).send({registerDate: employeeUsedTests.registerDate});
         
-        // expected =  employeeUsedTests;
-
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesByStatus/:status and check return', async () => {
+    test('Access the route get /getEmployeesByStatus/:status and check return status and properties', async () => {
         const status = employeeUsedTests.status;
         const res = await request(app).get(`/getEmployeesByStatus/${status}`);
         
-        // expected =  employeeUsedTests;
-
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesByUfBirth/:ufBirth and check return', async () => {
+    test('Access the route get /getEmployeesByUfBirth/:ufBirth and check return status and properties', async () => {
         const ufBirth = employeeUsedTests.ufBirth;
         const res = await request(app).get(`/getEmployeesByUfBirth/${ufBirth}`);
         
-        // expected =  employeeUsedTests;
-
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /getEmployeesBySalaryRange/:lowerSalary/:upperSalary and check return', async () => {
+    test('Access the route get /getEmployeesBySalaryRange/:lowerSalary/:upperSalary and check return status and properties', async () => {
         const lowerSalary = '8000.00';
         const upperSalary = '9000.00';
         const res = await request(app).get(`/getEmployeesBySalaryRange/${lowerSalary}/${upperSalary}`);
-        
-        // expected =  employeeUsedTests;
 
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('message');
         expect(res.body).toHaveProperty('data');
-        // expect(res.body.data).toContainEqual(expected);
     })
 
-    test('Access the route get /addingOrUpdateEmployee and check return', async () => {
+    test('Access the route get /addingOrUpdateEmployee and check return status and properties', async () => {
         employee =  {
             name: 'joão',
             cpf: '111111111111',
@@ -103,7 +82,7 @@ describe('Tests for routes', () => {
         expect(res.body).toHaveProperty('message');
     })
 
-    test('Access the route get /deleteEmployeeByCpf/:cpf and check return', async () => {
+    test('Access the route get /deleteEmployeeByCpf/:cpf and check return status and properties', async () => {
         const cpf = '111111111111';
         const res = await request(app).delete(`/deleteEmployeeByCpf/${cpf}`);
         expect(res.status).toEqual(200);
