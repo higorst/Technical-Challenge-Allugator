@@ -12,81 +12,121 @@ describe ('Tests for service methods', () => {
     
     test('Verific get employee for name.', async () => {
         
-        let expected = employeeUsedTests;
-
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 3;
-        factorValue = 'Aaron Aaberg';
+        factorValue = employeeUsedTests.name;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for cpf.', async () => {
         
-        let expected = employeeUsedTests;
-
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 2;
-        factorValue = '85235708709';
+        factorValue = employeeUsedTests.cpf;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for status.', async () => {
         
-        let expected = employeeUsedTests
-        
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 6;
-        factorValue = 'ATIVO';
+        factorValue = employeeUsedTests.status;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for register date.', async () => {
         
-        let expected = employeeUsedTests;
-        
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 0;
-        factorValue = '15/04/2017';
+        factorValue = employeeUsedTests.registerDate;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for office.', async () => {
         
-        let expected = employeeUsedTests;
-        
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 1;
-        factorValue = 'Dev Jr';
+        factorValue = employeeUsedTests.office;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for UF birth.', async () => {
         
-        let expected = employeeUsedTests;
-        
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 4;
-        factorValue = 'AP';
+        factorValue = employeeUsedTests.ufBirth;
         
-        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
     test('Verific get employee for salary range.', async () => {
-        
-        let expected = employeeUsedTests;
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         lowerSalary = 7000.0;
         upperSalary = 8965.30;
         positionFilterFactor = 5;
         
-        expect(await EmployeesServices.getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary)).toContainEqual(expected)
+        expect(await EmployeesServices.getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary)).toHaveProperty('data')
     })
+
+
+    //Testar direito
+    // test('Verific service adding employee.', async () => {
+    //     let employee =  {
+    //         name: 'joão teste',
+    //         cpf: '222222222',
+    //         office: 'Dev Jr',
+    //         registerDate: '10/04/2017',
+    //         ufBirth: 'BA',
+    //         salary: '1005.30',
+    //         status: 'ATIVO'
+    //     }
+    //     expect(await EmployeesServices.addingEmployee(employee)).toHaveProperty('message')
+    // })
+
+    // test('Verific service update employee.', async () => {
+    //     let employeeAlreadyRegister =  {
+    //         name: 'joão teste',
+    //         cpf: '222222222',
+    //         office: 'Dev Jr',
+    //         registerDate: '10/04/2017',
+    //         ufBirth: 'BA',
+    //         salary: '1005.30',
+    //         status: 'ATIVO'
+    //     }
+    //     let newEmployee =  {
+    //         name: 'joão teste alterado',
+    //         cpf: '222222222',
+    //         office: 'Dev Jr',
+    //         registerDate: '12/04/2017',
+    //         ufBirth: 'BA',
+    //         salary: '1005.30',
+    //         status: 'ATIVO'
+    //     }
+    //     const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
+
+    //     expect(await EmployeesServices.updateEmployee(data, employeeAlreadyRegister, newEmployee)).toHaveProperty('message')
+    // })
+
+    // test('Verific service delete employee.', async () => {
+    //     let employee =  {
+    //         name: 'joão teste alterado',
+    //         cpf: '222222222',
+    //         office: 'Dev Jr',
+    //         registerDate: '12/04/2017',
+    //         ufBirth: 'BA',
+    //         salary: '1005.30',
+    //         status: 'ATIVO'
+    //     }
+    //     const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
+
+    //     expect(await EmployeesServices.deleteEmployee(data, employee)).toHaveProperty('message')
+    // })
 
 
 })

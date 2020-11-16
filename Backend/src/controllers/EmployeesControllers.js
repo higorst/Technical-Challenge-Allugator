@@ -8,10 +8,10 @@ class EmployeeControllers {
             let name = req.params.name;
             const data = await EmployeesServices.getData();   
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, name);
-            if(employees.length === 0 ){
-                res.json({message: 'Employee not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employee not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
         } catch(err){
             next(err);
@@ -24,10 +24,10 @@ class EmployeeControllers {
             let cpf = req.params.cpf;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
-            if(employees.length === 0 ){
-                res.json({message: 'Employee not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employee not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees});
+                res.json({message:'Employees found.', data: employees.data});
             }
         } catch(err){
             next(err);
@@ -40,10 +40,10 @@ class EmployeeControllers {
             let office = req.params.office;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, office);
-            if(employees.length === 0 ){
-                res.json({message: 'Employees not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employees not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
         } catch(err){
             next(err);
@@ -56,10 +56,10 @@ class EmployeeControllers {
             let registerDate = req.body.registerDate;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, registerDate)
-            if(employees.length === 0 ){
-                res.json({message: 'Employees not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employees not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
        } catch(err){
            next(err);
@@ -72,10 +72,10 @@ class EmployeeControllers {
             let status = req.params.status;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, status);
-            if(employees.length === 0 ){
-                res.json({message: 'Employees not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employees not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
         } catch(err){
             next(err);
@@ -88,10 +88,10 @@ class EmployeeControllers {
             let ufBirth = req.params.ufBirth;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployees(data, positionFilterFactor, ufBirth);
-            if(employees.length === 0 ){
-                res.json({message: 'Employees not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employees not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
         } catch(err){
             next(err);
@@ -105,10 +105,10 @@ class EmployeeControllers {
             let upperSalary = req.params.upperSalary;
             const data = await EmployeesServices.getData();
             const employees = await EmployeesServices.getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary);
-            if(employees.length === 0 ){
-                res.json({message: 'Employees not found.'})
+            if(employees.data.length === 0 ){
+                res.json({message: 'Employees not found.', data: []})
             } else{
-                res.json({message:'Employees found.', data: employees})
+                res.json({message:'Employees found.', data: employees.data})
             }
         } catch(err){
             next(err);
@@ -122,11 +122,11 @@ class EmployeeControllers {
             let positionFilterFactor = 2;
             const data = await EmployeesServices.getData();
             const employeeAlreadyRegistered = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
-            if(employeeAlreadyRegistered.length === 0){
+            if(employeeAlreadyRegistered.data.length === 0){
                let statusAddingEmployee = await EmployeesServices.addingEmployee(employee)
                 res.json(statusAddingEmployee)
             } else {
-                let statusUpdateEmployee = await EmployeesServices.updateEmployee(data, employeeAlreadyRegistered, employee)
+                let statusUpdateEmployee = await EmployeesServices.updateEmployee(data, employeeAlreadyRegistered.data, employee)
                 res.json(statusUpdateEmployee)
             }
         } catch(err){
@@ -140,10 +140,10 @@ class EmployeeControllers {
             let cpf = req.params.cpf;
             const data = await EmployeesServices.getData();
             const employeeAlreadyRegistered = await EmployeesServices.getEmployees(data, positionFilterFactor, cpf);
-            if(employeeAlreadyRegistered.length === 0){
+            if(employeeAlreadyRegistered.data.length === 0){
                 res.json({message: 'Employee not found.'})
             } else {
-                let statusExcludedEmployee = await EmployeesServices.deleteEmployee(data, employeeAlreadyRegistered);
+                let statusExcludedEmployee = await EmployeesServices.deleteEmployee(data, employeeAlreadyRegistered.data);
                 res.json(statusExcludedEmployee)
             }
         } catch(err){
