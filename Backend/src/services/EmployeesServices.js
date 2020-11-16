@@ -27,7 +27,7 @@ class EmployeeServices {
                 }
             }
         }
-        return (employees);
+        return ({data: employees});
     }
 
     async getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary){
@@ -49,7 +49,7 @@ class EmployeeServices {
                 }
             }
         }
-        return (employees);
+        return ({data: employees});
     }
 
 
