@@ -10,7 +10,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getData()).toBeDefined();
     })
     
-    test('Verific get employee for name.', async () => {
+    test('Checks the service that returns the employee from the name.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 3;
@@ -19,7 +19,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for cpf.', async () => {
+    test('Checks the service that returns the employee from the cpf.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 2;
@@ -28,7 +28,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for status.', async () => {
+    test('Checks the service that returns the employees by status.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 6;
@@ -37,7 +37,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for register date.', async () => {
+    test('Checks the service that returns employees by register date.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 0;
@@ -46,7 +46,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for office.', async () => {
+    test('Checks the service that returns employees by office.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 1;
@@ -55,7 +55,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for UF birth.', async () => {
+    test('Checks the service that returns employees by birthplace.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         positionFilterFactor = 4;
@@ -64,7 +64,7 @@ describe ('Tests for service methods', () => {
         expect(await EmployeesServices.getEmployees(data, positionFilterFactor, factorValue)).toHaveProperty('data');
     })
 
-    test('Verific get employee for salary range.', async () => {
+    test('Checks the service that returns employees by salary range.', async () => {
         
         const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
         lowerSalary = 7000.0;
@@ -75,58 +75,57 @@ describe ('Tests for service methods', () => {
     })
 
 
-    //Testar direito
-    // test('Verific service adding employee.', async () => {
-    //     let employee =  {
-    //         name: 'joão teste',
-    //         cpf: '222222222',
-    //         office: 'Dev Jr',
-    //         registerDate: '10/04/2017',
-    //         ufBirth: 'BA',
-    //         salary: '1005.30',
-    //         status: 'ATIVO'
-    //     }
-    //     expect(await EmployeesServices.addingEmployee(employee)).toHaveProperty('message')
-    // })
+    test('Checks service that adds employee.', async () => {
+        let employee =  {
+            name: 'joão teste',
+            cpf: '222222222',
+            office: 'Dev Jr',
+            registerDate: '10/04/2017',
+            ufBirth: 'BA',
+            salary: '1005.30',
+            status: 'ATIVO'
+        }
+        expect(await EmployeesServices.addingEmployee(employee)).toHaveProperty('message')
+    })
 
-    // test('Verific service update employee.', async () => {
-    //     let employeeAlreadyRegister =  {
-    //         name: 'joão teste',
-    //         cpf: '222222222',
-    //         office: 'Dev Jr',
-    //         registerDate: '10/04/2017',
-    //         ufBirth: 'BA',
-    //         salary: '1005.30',
-    //         status: 'ATIVO'
-    //     }
-    //     let newEmployee =  {
-    //         name: 'joão teste alterado',
-    //         cpf: '222222222',
-    //         office: 'Dev Jr',
-    //         registerDate: '12/04/2017',
-    //         ufBirth: 'BA',
-    //         salary: '1005.30',
-    //         status: 'ATIVO'
-    //     }
-    //     const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
+    test('Checks service that alters employee.', async () => {
+        let employeeAlreadyRegister =  {
+            name: 'joão teste',
+            cpf: '222222222',
+            office: 'Dev Jr',
+            registerDate: '10/04/2017',
+            ufBirth: 'BA',
+            salary: '1005.30',
+            status: 'ATIVO'
+        }
+        let newEmployee =  {
+            name: 'joão teste alterado',
+            cpf: '222222222',
+            office: 'Dev Jr',
+            registerDate: '12/04/2017',
+            ufBirth: 'BA',
+            salary: '1005.30',
+            status: 'ATIVO'
+        }
+        const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
 
-    //     expect(await EmployeesServices.updateEmployee(data, employeeAlreadyRegister, newEmployee)).toHaveProperty('message')
-    // })
+        expect(await EmployeesServices.updateEmployee(data, employeeAlreadyRegister, newEmployee)).toHaveProperty('message')
+    })
 
-    // test('Verific service delete employee.', async () => {
-    //     let employee =  {
-    //         name: 'joão teste alterado',
-    //         cpf: '222222222',
-    //         office: 'Dev Jr',
-    //         registerDate: '12/04/2017',
-    //         ufBirth: 'BA',
-    //         salary: '1005.30',
-    //         status: 'ATIVO'
-    //     }
-    //     const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
-
-    //     expect(await EmployeesServices.deleteEmployee(data, employee)).toHaveProperty('message')
-    // })
+    test('Checks service that remove employee.', async () => {
+        let employee =  {
+            name: 'joão teste alterado',
+            cpf: '222222222',
+            office: 'Dev Jr',
+            registerDate: '12/04/2017',
+            ufBirth: 'BA',
+            salary: '1005.30',
+            status: 'ATIVO'
+        }
+        const data = await fs.readFile(`${__dirname}/../data/database.txt`, "utf8");
+        res = await EmployeesServices.deleteEmployee(data, employee)
+        expect(res).toHaveProperty('message')
+    })
 
 
 })
