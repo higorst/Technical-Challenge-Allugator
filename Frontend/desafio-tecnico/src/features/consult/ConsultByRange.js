@@ -5,7 +5,8 @@ import './Styles.css'
 import api from '../../services/api';
 
 
-//Poderia usar o outro componente, mas a lógica ficaria confusa e não se justificaria.
+//Query component for screens with more than one data entry.
+//A generic component could be used, but it would create unnecessary complexity in the application.
 const ConsultByRange = (props) => {
     const [data, setData] = useState([]);
     const [factorConsult, setFactorConsult] = useState('');

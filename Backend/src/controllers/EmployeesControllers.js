@@ -2,6 +2,7 @@ const EmployeesServices = require('./../services/EmployeesServices');
 
 class EmployeeControllers {
 
+    // Function responsible for obtaining employees by name
     async getEmployeesByName(req, res, next){
         try{
             let positionFilterFactor = 3;
@@ -18,6 +19,7 @@ class EmployeeControllers {
         }
     }
 
+    // Function responsible for obtaining employees by cpf
     async getEmployeesByCpf(req, res, next){
        try { 
             let positionFilterFactor = 2;
@@ -34,6 +36,7 @@ class EmployeeControllers {
         }
     }
 
+    // Function responsible for obtaining employees by Office
     async getEmployeesByOffice(req, res, next){
         try {
             let positionFilterFactor = 1;
@@ -49,7 +52,7 @@ class EmployeeControllers {
             next(err);
         }
     }
-
+    // Function responsible for obtaining employees by Register date
     async getEmployeesByRegisterDate(req, res, next){
        try{
             let positionFilterFactor = 0;
@@ -66,6 +69,7 @@ class EmployeeControllers {
        }
     }
 
+    // Function responsible for obtaining employees by Status
     async getEmployeesByStatus(req, res, next){
         try{
             let positionFilterFactor = 6;
@@ -82,6 +86,7 @@ class EmployeeControllers {
         }
     }
 
+    // Function responsible for obtaining employees by Birthplace
     async getEmployeesByUfBirth(req, res, next) {
         try{
             let positionFilterFactor = 4;
@@ -98,6 +103,7 @@ class EmployeeControllers {
         }
     }
 
+     // Function responsible for obtaining employees by salary range
     async getEmployeesBySalaryRange(req, res, next){
         try{
             let positionFilterFactor = 5;
@@ -115,6 +121,7 @@ class EmployeeControllers {
         }
     }
 
+    //Function that adds or changes user data
     async addingOrUpdateEmployee(req, res, next){
         try{
             let employee = req.body;
@@ -134,6 +141,7 @@ class EmployeeControllers {
         }
     }
 
+    //Function that remove employee by cpf
     async deleteEmployeeByCpf(req, res, next){
         try{
             let positionFilterFactor = 2;

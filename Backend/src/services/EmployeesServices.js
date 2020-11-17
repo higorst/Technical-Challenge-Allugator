@@ -3,11 +3,14 @@ var fs = require('fs').promises;
 const {stringFormatForSave} = require('./../helpers/stringFormat');
 
 class EmployeeServices {
+
+    // Function that retrieves data from the database
     async getData(){
         const data = await fs.readFile(`${__dirname}/../../data/database.txt`, "utf8");
         return data
     }
 
+    //Function that scrolls through lines of the database and checks if a search factor exists in the database. 
     async getEmployees(data, positionFilterFactor, factorValue){
         let employees = []
         for (let line of data.split('\n')){
@@ -30,6 +33,8 @@ class EmployeeServices {
         return ({data: employees});
     }
 
+    //Function that scrolls through lines of the database and checks if a search factor exists in the database.
+    //Uses the range of values
     async getEmployeesForRangeSalary(data, positionFilterFactor, lowerSalary, upperSalary){
         let employees = []
         for (let line of data.split('\n')){
@@ -52,7 +57,7 @@ class EmployeeServices {
         return ({data: employees});
     }
 
-
+    //Function that adds employee to the text file (database).
     async addingEmployee(employee){
         try {
             let stringSave = await stringFormatForSave(employee);
@@ -63,6 +68,7 @@ class EmployeeServices {
         }
     }
 
+   // Function that change employee to the text file (database).
     async updateEmployee(data, employeeAlreadyRegistered, newEmployee){
         try{
             let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered);
@@ -75,6 +81,7 @@ class EmployeeServices {
         }
     }
 
+    // Function that remove employee to the text file (database).
     async deleteEmployee(data, employeeAlreadyRegistered){
         try{
             let stringAlreadyRegistered = await stringFormatForSave(employeeAlreadyRegistered);

@@ -1,6 +1,8 @@
 import React from 'react';
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+
+//Component referring to the top bar present in the application.
 const TopBar = () => {
     return(
         <Navbar bg="dark" variant="dark" expand="lg">

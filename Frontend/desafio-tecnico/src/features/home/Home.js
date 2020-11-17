@@ -1,4 +1,6 @@
 import logo from './../../assets/logo.png'
+
+//Home page
 const Home = () => {
     return(
         <div>
