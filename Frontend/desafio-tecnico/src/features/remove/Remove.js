@@ -26,6 +26,10 @@ const Remove = ({props}) => {
     }
     return (
         <Container>
+            <h2>
+                Remova um funcionário através do CPF
+            </h2>
+            <br/>
             <Row>
                 <Col xs={10}>
                     <InputGroup size="sm" className="mb-3">
