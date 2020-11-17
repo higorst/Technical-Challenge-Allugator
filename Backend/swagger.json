@@ -1,0 +1,440 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "API RESTful",
+        "description": "A restful API requested as for technical challenge"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:3001",
+    "basePath": "/",
+    "paths": {
+        "/getEmployeesByName/{name}": {
+            "get": {
+                "summary": "Get employee by name",
+                "description": "Returns an employee's information according to his name.",
+                "operationId": "getEmployeesByName",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "name",
+                      "in": "path",
+                      "description": "Name of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "joão" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesByCpf/{cpf}": {
+            "get": {
+                "summary": "Get employee by cpf",
+                "description": "Returns an employee's information according to his cpf.",
+                "operationId": "getEmployeesByCpf",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "cpf",
+                      "in": "path",
+                      "description": "Cpf of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "00000000000" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesByOffice/{office}": {
+            "get": {
+                "summary": "Get employee by cpf",
+                "description": "Returns an employee's information according to his office.",
+                "operationId": "getEmployeesByOffice",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "office",
+                      "in": "path",
+                      "description": "office of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "DEV jr" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesByStatus/{status}": {
+            "get": {
+                "summary": "Get employee by status",
+                "description": "Returns an employee's information according to his status.",
+                "operationId": "getEmployeesByStatus",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "status",
+                      "in": "path",
+                      "description": "Status of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "ATIVO" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesByUfBirth/{ufBirth}": {
+            "get": {
+                "summary": "Get employee by birthplace",
+                "description": "Returns an employee's information according to his birthplace.",
+                "operationId": "getEmployeesByUfBirth",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "ufBirth",
+                      "in": "path",
+                      "description": "birthplace of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "BA" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesBySalaryRange/{lowerSalary}/{upperSalary}": {
+            "get": {
+                "summary": "Get employee by salary range",
+                "description": "Returns an employee's information according to his salary range.",
+                "operationId": "getEmployeesBySalaryRange",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "lowerSalary",
+                      "in": "path",
+                      "description": "Lower salary of employee to return",
+                      "required": true,
+                      "type": "string",
+                      "example": "1000.00" 
+                    },
+                    {
+                        "name": "upperSalary",
+                        "in": "path",
+                        "description": "Upper salary of employee to return",
+                        "required": true,
+                        "type": "string",
+                        "example": "2000.00" 
+                      }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeesByRegisterDate": {
+            "post": {
+                "summary": "Get employee by registe date",
+                "description": "Returns an employee's information according to his registter date.",
+                "operationId": "getEmployeesByRegisterDate",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Object stating registration date",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/RegisterDate"
+                    }
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotFound"
+                        }
+                    }
+                }
+            }
+        },
+        "/addingOrUpdateEmployee": {
+            "post": {
+                "summary": "Adds or changes employee information",
+                "description": "Returns a message informing which user has been registered or changed.",
+                "operationId": "addingOrUpdateEmployee",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Object stating registration date",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/Employee"
+                    }
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseAdding"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorAdding"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteEmployeeByCpf/{cpf}": {
+            "delete": {
+                "summary": "Remove employee from cpf",
+                "description": "Returns a message informing which user has been removed.",
+                "operationId": "deleteEmployeeByCpf",
+                "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                        "name": "cpf",
+                        "in": "path",
+                        "description": "Cpf of employee",
+                        "required": true,
+                        "type": "string",
+                        "example": "0000000000" 
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseRemove"
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found.",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseNotRemove"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+       "Employee": {
+           "type": "object",
+           "properties":{
+               "name": {
+                   "type": "string",
+                   "example": "Samuel Rebouças de Jesus"
+               },
+               "cpf": {
+                    "type": "string",
+                    "example": "00000000000"
+                },
+                "office": {
+                    "type": "string",
+                    "example": "DEV jr"
+                },
+                "registerDate": {
+                    "type": "string",
+                    "example": "17/11/2020"
+                },
+                "ufBirth": {
+                    "type": "string",
+                    "example": "BA"
+                },
+                "salary": {
+                    "type": "string",
+                    "example": "2000.00"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ATIVO"
+                }
+
+           }
+       },
+       "ResponseSuccess": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "Requisição bem sucedida."
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Employee"
+                }
+            }
+            }
+        },
+        "ResponseNotFound": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "Employee not found."
+            },
+            "data": {
+                "type": "array",
+                "example": "[]"
+            }
+            }
+        },
+        "ResponseAdding": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "Employee Registered."
+            }
+            }
+        },
+        "ErrorAdding": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "Error."
+            }
+            }
+        },
+        "ResponseRemove": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "Employee removed with success."
+            }
+            }
+        },
+        "ResponseNotRemove": {
+            "type": "object",
+            "properties": {
+            "message": {
+                "type": "string",
+                "example": "error while removing employee."
+            }
+            }
+        },
+        "RegisterDate":{
+            "type": "object",
+            "properties": {
+                "registerDate": {
+                    "type": "string",
+                    "example": "10/10/2010"
+                    }
+                }
+            }
+        }
+    }
