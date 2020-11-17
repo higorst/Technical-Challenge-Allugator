@@ -47,6 +47,10 @@ const Register = ({props}) => {
 
     return (
             <Container>
+                <h2>
+                    Cadastre um novo funcionário
+                </h2>
+                <br/>
                 <Col xs={10}>
                     <InputGroup size="sm" className="mb-3">
                         <InputGroup.Prepend>
@@ -99,7 +103,7 @@ const Register = ({props}) => {
 
                 </Col>
                     <Col  className="button-search">
-                        <Button variant="dark" size="sm" onClick={handleSubmit}>Salvar</Button>
+                        <Button variant="dark" onClick={handleSubmit}>Salvar</Button>
                     </Col>
             </Container>
     )
