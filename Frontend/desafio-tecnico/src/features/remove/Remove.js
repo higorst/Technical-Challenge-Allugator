@@ -3,6 +3,7 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 import api from './../../services/api';
 import  {Container, Col, InputGroup, FormControl, Button, Row} from 'react-bootstrap';
 
+//User removal screen
 const Remove = ({props}) => {
     const [cpf, setCpf] = useState('');
     const { addToast } = useToasts();

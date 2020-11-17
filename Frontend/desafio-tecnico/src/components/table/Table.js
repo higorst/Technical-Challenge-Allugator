@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import {Table, Pagination} from 'react-bootstrap'
 
+
+//Component referring to the table for displaying the data.
 const ListTable = ({items}) => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
@@ -12,15 +14,6 @@ const ListTable = ({items}) => {
       setData([])
     }
   }, [items])
-// let active = 1;
-// let items = [];
-// for (let number = 1; number <= 5; number++) {
-//   items.push(
-//     <Pagination.Item key={number} active={number === active}>
-//       {number}
-//     </Pagination.Item>,
-//   );
-// }
     return(
         <div>
         <Table striped bordered hover variant="dark">
@@ -57,7 +50,6 @@ const ListTable = ({items}) => {
                }
             </tbody>
         </Table>
-        {/* <Pagination size="sm">{data}</Pagination> */}
         </div>
     )
 }

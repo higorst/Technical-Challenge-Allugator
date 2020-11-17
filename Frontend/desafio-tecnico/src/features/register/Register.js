@@ -3,6 +3,7 @@ import  {Container, Col, InputGroup, FormControl, Button} from 'react-bootstrap'
 import api from './../../services/api';
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 
+//User registration screen
 const Register = ({props}) => {
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');

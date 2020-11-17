@@ -4,6 +4,7 @@ import ListTable from './../../components/table/Table';
 import './Styles.css'
 import api from './../../services/api';
 
+//Query component reused for queries that require only one text field.
 const Consult = (props) => {
     const [data, setData] = useState([]);
     const [factorConsult, setFactorConsult] = useState('');
